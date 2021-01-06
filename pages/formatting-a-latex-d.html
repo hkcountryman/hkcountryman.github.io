@@ -6,7 +6,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>Resume
+        <title>Formatting a LaTeX document to convert to PNG
 </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
@@ -123,38 +123,53 @@
         <li>
             <article class="post-entry">
                 <header class="entry-header">
-                    <a href="https://hallecountryman.com/pages/resume.html" rel="bookmark"><h1>Resume</h1></a>
+                    <a href="https://hallecountryman.com/pages/formatting-a-latex-d.html" rel="bookmark"><h1>Formatting a LaTeX document to convert to PNG</h1></a>
                 </header>
                 <section class="post-content">
-                    <h2><div align="center">Education</div></h2>
-<p><strong>Arizona State University</strong>, Mesa, AZ</p>
-<p><em>B.S., Software Engineering (expected to graduate in April 2023)</em></p>
-<ul>
-<li>4.0 GPA</li>
-<li>Dean's list, 1 semester</li>
-<li>Relevant coursework: principles of programming, object-oriented programming and data structures, introduction to programming languages, design and analysis of data structures and algorithms, computer systems fundamentals</li>
-</ul>
-<hr>
-<h2><div align="center">Skills</div></h2>
-<ul>
-<li>Comfortable with Java and Python; some experience with C/C++, Common Lisp, and HTML/CSS</li>
-<li>Familiar with git and GitHub</li>
-<li>Experience using Linux, Windows, and macOS</li>
-<li>Time management: able to work 30 hours a week as a full-time student</li>
-<li>Formal English grammar skills for written communication/report writing</li>
-</ul>
-<hr>
-<h2><div align="center">Project Showcase</div></h2>
-<p><a href="https://github.com/hkcountryman/latex_to_png"><strong>ltxpng</strong></a>: an open-source Python program that converts LaTeX commands into PNGs</p>
-<ul>
-<li>Designed a graphical interface with Tkinter in addition to options to run the program from entirely within the command line environment</li>
-<li>Created git branches to develop 3 beta versions; packaged a first release that included an installer bash script</li>
-<li>Used a virtual machine to test and debug</li>
-</ul>
-<hr>
-<h2><div align="center">Work Experience</div></h2>
-<p><strong>Starbucks Coffee Company</strong>, Oakland, CA</p>
-<p><em>Barista (February 2018-Present)</em></p>
+                    <p>If you've checked out the ltxpng GUI, you've probably noticed it enforces a specific preamble and certain formatting commands for any .tex file it creates:</p>
+<p><img alt="gui" src="https://hallecountryman.com/images/gui.png"></p>
+<p>An explanation for each command follows.</p>
+<div class="highlight"><pre><span></span><code><span class="k">\documentclass</span><span class="nb">{</span>article<span class="nb">}</span>
+</code></pre></div>
+
+
+<p>This defines the type of document we'll be making. The Comprehensive TeX Archive Network (CTAN) has a good <a href="https://ctan.org/topic/class">record</a> of the many document classes available, but article is fine for our purposes.</p>
+<div class="highlight"><pre><span></span><code><span class="k">\thispagestyle</span><span class="nb">{</span>empty<span class="nb">}</span>
+</code></pre></div>
+
+
+<p>This command changes the page style for the current page. This is necessary because ltxpng creates a PDF before turning the contents into a PNG. (It is assumed you won't need more than one page per image.) The empty argument indicates that we don't want page numbers. If we left it out, the contents of the PDF would be whatever math you format at the top of the page as well as a page number all the way at the bottom of the page. Cropping it to contents would make for a huge image with a lot of blank space in the middle and an unwanted page number at the bottom.</p>
+<div class="highlight"><pre><span></span><code><span class="k">\usepackage</span><span class="na">[active, tightpage]</span><span class="nb">{</span>preview<span class="nb">}</span>
+</code></pre></div>
+
+
+<p>The <a href="https://ctan.math.illinois.edu/macros/latex/contrib/preview/preview.pdf">preview package</a> allows for extra large PDFs (more space than you would ever need for something being turned into a PNG). Without it, we'd run the risk of math spilling over the margins of a normal page and being unintentionally cropped.</p>
+<div class="highlight"><pre><span></span><code><span class="c">% Import packages:</span>
+</code></pre></div>
+
+
+<p>This is simply a comment, like anything else that begins with a <code>%</code>. It lets users know they can import packages in the text box that follows (using <code>\usepackage{package name here}</code>). It is vital that this comment not be removed because the program looks for it when parsing existing files in order to reopen them in the GUI (see the <a href="https://github.com/hkcountryman/latex_to_png/blob/5dab3503b26d8218ba80549597d5bd99bc15de68/latex_to_png/file_IO.py#L64">source code</a>).</p>
+<div class="highlight"><pre><span></span><code><span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+</code></pre></div>
+
+
+<p>Now the preamble is over. This tag indicates the beginning of all the stuff that will actually be rendered—namely, your math. This is another critical line that must not be deleted, not only because we can't do much if we never begin our document, but because the program looks for this line while parsing existing files.</p>
+<div class="highlight"><pre><span></span><code><span class="k">\begin</span><span class="nb">{</span>preview<span class="nb">}</span>
+</code></pre></div>
+
+
+<p>This tag is necessary to actually use the preview package.</p>
+<div class="highlight"><pre><span></span><code><span class="c">% Enter math mode as desired:</span>
+</code></pre></div>
+
+
+<p>Another comment, and once again something that can't be deleted because the program looks for this specific line when parsing existing files.</p>
+<div class="highlight"><pre><span></span><code><span class="k">\end</span><span class="nb">{</span>preview<span class="nb">}</span>
+<span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
+</code></pre></div>
+
+
+<p>For every <code>\begin</code> we must have an <code>\end</code>. So don't delete these! They're also needed to parse existing files.</p>
                 </section>
                 <hr/>
             </article>

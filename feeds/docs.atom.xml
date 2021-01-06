@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom"><title>Halle Countryman - docs</title><link href="https://hallecountryman.com/" rel="alternate"></link><link href="https://hallecountryman.com/feeds/docs.atom.xml" rel="self"></link><id>https://hallecountryman.com/</id><updated>2021-01-06T12:55:55-08:00</updated><subtitle></subtitle><entry><title>Test</title><link href="https://hallecountryman.com/test.html" rel="alternate"></link><published>2021-01-02T00:00:00-08:00</published><updated>2021-01-06T12:55:55-08:00</updated><author><name>Halle Countryman</name></author><id>tag:hallecountryman.com,2021-01-02:/test.html</id><summary type="html">&lt;h2&gt;Downloading the source code&lt;/h2&gt;
+&lt;h3&gt;Downloading the latest release with git&lt;/h3&gt;
+&lt;p&gt;If you do not have git installed, install it with apt:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo apt install git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Navigate to any directory where you would like to download the code. After we run the setup script, it will be safe to delete the …&lt;/p&gt;</summary><content type="html">&lt;h2&gt;Downloading the source code&lt;/h2&gt;
+&lt;h3&gt;Downloading the latest release with git&lt;/h3&gt;
+&lt;p&gt;If you do not have git installed, install it with apt:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo apt install git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Navigate to any directory where you would like to download the code. After we run the setup script, it will be safe to delete the download, so it doesn't really matter. Let's just go to our home directory:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now, clone the repository:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ git clone https://github.com/hkcountryman/latex_to_png.git
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;Downloading a release from your browser&lt;/h3&gt;
+&lt;p&gt;Find a release &lt;a href="https://github.com/hkcountryman/latex_to_png/releases"&gt;here&lt;/a&gt; and download either the ZIP or the tarball. Navigate to your Downloads:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; ~/Downloads
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;If you downloaded the ZIP:&lt;/h4&gt;
+&lt;p&gt;It should be named latex_to_png-x.zip, where x is the version number. If you don't already have &lt;code&gt;unzip&lt;/code&gt; on your system, you may need to run&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ sudo apt install unzip
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;Now unzip into your Downloads. If unzip is installed, you should be able to run the following (remembering to replace x with the version number):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ unzip latex_to_png-x.zip
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h4&gt;If you downloaded the tarball:&lt;/h4&gt;
+&lt;p&gt;It should be named latex_to_png-x.tar.gz, where x is the version number. Extract &lt;/p&gt;
+&lt;p&gt;it to your Downloads (remembering to replace x with the version number):&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ tar -xf latex_to_png-x.tar.gz
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Running the setup script&lt;/h2&gt;
+&lt;p&gt;Next, regardless of how you downloaded the source code, you must run the setup script. Navigate into the directory you cloned or extracted and run setup.sh:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; latex_to_png
+$ sudo ./setup.sh
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;The script will install dependencies via apt, copy all needed python modules into /usr/local, and create a symbolic link to the program's entry point in /usr/local/bin so that you can call the program from anywhere. It will also request you tell it where to create texdir, the directory in which all files you create with the program will be located. Note that it will not recognize the tilde: you must use "/home/[your user name here]" instead.&lt;/p&gt;
+&lt;p&gt;Now it is save to navigate out of the downloaded directory and delete it:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ &lt;span class="nb"&gt;cd&lt;/span&gt; ..
+$ sudo rm -rf latex_to_png
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h3&gt;If you wish to edit the code:&lt;/h3&gt;
+&lt;p&gt;You may want to edit the code for your own uses, in which case you should not delete the latex_to_png folder. A setup_dev.sh script is provided that sets up a virtual environment for you when it is first run. The script can be run and the venv can be activated from within the latex_to_png folder thus:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;$ ./setup_dev.sh
+no venv detected, creating one now
+venv created, activate the script at /venv/bin/activate before running this script again
+$ . ./venv/bin/activate
+&lt;span class="o"&gt;(&lt;/span&gt;venv&lt;span class="o"&gt;)&lt;/span&gt; $
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;When you see &lt;code&gt;(venv)&lt;/code&gt; preceding your prompt, it has been successfully activated. Deactivate it at any time with&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;(&lt;/span&gt;venv&lt;span class="o"&gt;)&lt;/span&gt; $ deactivate
+$
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;p&gt;All python modules are in the subdirectory latex_to_png within the parent latex_to_png directory. Be aware that any changes you make to the code will not apply to the code that was copied into /usr/local, so the symlink in usr/local/bin cannot be used to test the changes you make. To run the altered code, you can navigate from the parent into the child latex_to_png directory and call ltxpng.py:&lt;/p&gt;
+&lt;div class="highlight"&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;code&gt;&lt;span class="o"&gt;(&lt;/span&gt;venv&lt;span class="o"&gt;)&lt;/span&gt; $ &lt;span class="nb"&gt;cd&lt;/span&gt; latex_to_png
+&lt;span class="o"&gt;(&lt;/span&gt;venv&lt;span class="o"&gt;)&lt;/span&gt; $ ./ltxpng.py
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;
+
+
+&lt;h2&gt;Running ltxpng&lt;/h2&gt;
+&lt;p&gt;The first time you run the program, texdir will be created in the location you specified for it during the setup script.&lt;/p&gt;
+&lt;p&gt;From anywhere in your file system, you will be able to run  &lt;code&gt;ltxpng&lt;/code&gt; to start the program. It requires some flags and/or an argument. &lt;/p&gt;</content><category term="docs"></category></entry></feed>

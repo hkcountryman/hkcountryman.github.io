@@ -6,19 +6,20 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-        <title>    Formatting a LaTeX document to convert to PNG
+        <title>    Test
 </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width">
-            <link rel="stylesheet" href="/theme/css/normalize.css">
+            <link rel="stylesheet" href="https://hallecountryman.com/theme/css/normalize.css">
         <link href='//fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
         <link href='//fonts.googleapis.com/css?family=Oswald' rel='stylesheet' type='text/css'>
-        <link rel="stylesheet" href="/theme/css/font-awesome.min.css">
-        <link rel="stylesheet" href="/theme/css/main.css">
+        <link rel="stylesheet" href="https://hallecountryman.com/theme/css/font-awesome.min.css">
+        <link rel="stylesheet" href="https://hallecountryman.com/theme/css/main.css">
 
-    <link rel="stylesheet" href="/theme/css/blog.css">
-    <link rel="stylesheet" href="/theme/css/github.css">
-        <script src="/theme/js/vendor/modernizr-2.6.2.min.js"></script>
+    <link rel="stylesheet" href="https://hallecountryman.com/theme/css/blog.css">
+    <link rel="stylesheet" href="https://hallecountryman.com/theme/css/github.css">
+        <link href="https://hallecountryman.com/feeds/all.atom.xml" type="application/atom+xml" rel="alternate" title="Halle Countryman Atom Feed" />
+        <script src="https://hallecountryman.com/theme/js/vendor/modernizr-2.6.2.min.js"></script>
     </head>
     <body>
         <!--[if lt IE 7]>
@@ -27,7 +28,7 @@
 
         <div id="wrapper">
 <header id="sidebar" class="side-shadow"> <hgroup id="site-header">
-           <a id="site-title" href=""><h1><?xml version="1.0" encoding="UTF-8" standalone="no"?>
+           <a id="site-title" href="https://hallecountryman.com"><h1><?xml version="1.0" encoding="UTF-8" standalone="no"?>
             <svg
                xmlns:dc="http://purl.org/dc/elements/1.1/"
                xmlns:cc="http://creativecommons.org/ns#"
@@ -95,9 +96,9 @@
     </hgroup>
     <nav>
         <ul id="nav-links">
-                <li><a href="/pages/about.html">About</a></li>
-                <li><a href="/pages/resume.html">Resume</a></li>
-                <li><a href="/pages/categories.html">Categories</a></li>
+                <li><a href="https://hallecountryman.com/pages/about.html">About</a></li>
+                <li><a href="https://hallecountryman.com/pages/resume.html">Resume</a></li>
+                <li><a href="https://hallecountryman.com/pages/projects.html">Projects</a></li>
         </ul>
     </nav>
     <nav id="contact-roll">
@@ -122,61 +123,97 @@
             <li>
                 <article class="post-entry">
                     <header class="entry-header">
-                        <time class="post-time" datetime="2021-01-01T00:00:00-08:00" pubdate>
-                            Fri 01 January 2021
+                        <time class="post-time" datetime="2021-01-02T00:00:00-08:00" pubdate>
+                            Sat 02 January 2021
                         </time>
-                        <a href="/formatting-a-latex-d.html" rel="bookmark"><h1>Formatting a LaTeX document to convert to PNG</h1></a>
+                        <a href="https://hallecountryman.com/test.html" rel="bookmark"><h1>Test</h1></a>
                     </header>
 
                     <section class="post-content">
-                        <p>If you've checked out the ltxpng GUI, you've probably noticed it enforces a specific preamble and certain formatting commands for any .tex file it creates:</p>
-<p><img alt="gui" src="/images/gui.png"></p>
-<p>An explanation for each command follows.</p>
-<div class="highlight"><pre><span></span><code><span class="k">\documentclass</span><span class="nb">{</span>article<span class="nb">}</span>
+                        <h2>Downloading the source code</h2>
+<h3>Downloading the latest release with git</h3>
+<p>If you do not have git installed, install it with apt:</p>
+<div class="highlight"><pre><span></span><code>$ sudo apt install git
 </code></pre></div>
 
 
-<p>This defines the type of document we'll be making. The Comprehensive TeX Archive Network (CTAN) has a good <a href="https://ctan.org/topic/class">record</a> of the many document classes available, but article is fine for our purposes.</p>
-<div class="highlight"><pre><span></span><code><span class="k">\thispagestyle</span><span class="nb">{</span>empty<span class="nb">}</span>
+<p>Navigate to any directory where you would like to download the code. After we run the setup script, it will be safe to delete the download, so it doesn't really matter. Let's just go to our home directory:</p>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span>
 </code></pre></div>
 
 
-<p>This command changes the page style for the current page. This is necessary because ltxpng creates a PDF before turning the contents into a PNG. (It is assumed you won't need more than one page per image.) The empty argument indicates that we don't want page numbers. If we left it out, the contents of the PDF would be whatever math you format at the top of the page as well as a page number all the way at the bottom of the page. Cropping it to contents would make for a huge image with a lot of blank space in the middle and an unwanted page number at the bottom.</p>
-<div class="highlight"><pre><span></span><code><span class="k">\usepackage</span><span class="na">[active, tightpage]</span><span class="nb">{</span>preview<span class="nb">}</span>
+<p>Now, clone the repository:</p>
+<div class="highlight"><pre><span></span><code>$ git clone https://github.com/hkcountryman/latex_to_png.git
 </code></pre></div>
 
 
-<p>The <a href="https://ctan.math.illinois.edu/macros/latex/contrib/preview/preview.pdf">preview package</a> allows for extra large PDFs (more space than you would ever need for something being turned into a PNG). Without it, we'd run the risk of math spilling over the margins of a normal page and being unintentionally cropped.</p>
-<div class="highlight"><pre><span></span><code><span class="c">% Import packages:</span>
+<h3>Downloading a release from your browser</h3>
+<p>Find a release <a href="https://github.com/hkcountryman/latex_to_png/releases">here</a> and download either the ZIP or the tarball. Navigate to your Downloads:</p>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> ~/Downloads
 </code></pre></div>
 
 
-<p>This is simply a comment, like anything else that begins with a <code>%</code>. It lets users know they can import packages in the text box that follows (using <code>\usepackage{package name here}</code>). It is vital that this comment not be removed because the program looks for it when parsing existing files in order to reopen them in the GUI (see the <a href="https://github.com/hkcountryman/latex_to_png/blob/5dab3503b26d8218ba80549597d5bd99bc15de68/latex_to_png/file_IO.py#L64">source code</a>).</p>
-<div class="highlight"><pre><span></span><code><span class="k">\begin</span><span class="nb">{</span>document<span class="nb">}</span>
+<h4>If you downloaded the ZIP:</h4>
+<p>It should be named latex_to_png-x.zip, where x is the version number. If you don't already have <code>unzip</code> on your system, you may need to run</p>
+<div class="highlight"><pre><span></span><code>$ sudo apt install unzip
 </code></pre></div>
 
 
-<p>Now the preamble is over. This tag indicates the beginning of all the stuff that will actually be rendered—namely, your math. This is another critical line that must not be deleted, not only because we can't do much if we never begin our document, but because the program looks for this line while parsing existing files.</p>
-<div class="highlight"><pre><span></span><code><span class="k">\begin</span><span class="nb">{</span>preview<span class="nb">}</span>
+<p>Now unzip into your Downloads. If unzip is installed, you should be able to run the following (remembering to replace x with the version number):</p>
+<div class="highlight"><pre><span></span><code>$ unzip latex_to_png-x.zip
 </code></pre></div>
 
 
-<p>This tag is necessary to actually use the preview package.</p>
-<div class="highlight"><pre><span></span><code><span class="c">% Enter math mode as desired:</span>
+<h4>If you downloaded the tarball:</h4>
+<p>It should be named latex_to_png-x.tar.gz, where x is the version number. Extract </p>
+<p>it to your Downloads (remembering to replace x with the version number):</p>
+<div class="highlight"><pre><span></span><code>$ tar -xf latex_to_png-x.tar.gz
 </code></pre></div>
 
 
-<p>Another comment, and once again something that can't be deleted because the program looks for this specific line when parsing existing files.</p>
-<div class="highlight"><pre><span></span><code><span class="k">\end</span><span class="nb">{</span>preview<span class="nb">}</span>
-<span class="k">\end</span><span class="nb">{</span>document<span class="nb">}</span>
+<h2>Running the setup script</h2>
+<p>Next, regardless of how you downloaded the source code, you must run the setup script. Navigate into the directory you cloned or extracted and run setup.sh:</p>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> latex_to_png
+$ sudo ./setup.sh
 </code></pre></div>
 
 
-<p>For every <code>\begin</code> we must have an <code>\end</code>. So don't delete these! They're also needed to parse existing files.</p>
+<p>The script will install dependencies via apt, copy all needed python modules into /usr/local, and create a symbolic link to the program's entry point in /usr/local/bin so that you can call the program from anywhere. It will also request you tell it where to create texdir, the directory in which all files you create with the program will be located. Note that it will not recognize the tilde: you must use "/home/[your user name here]" instead.</p>
+<p>Now it is save to navigate out of the downloaded directory and delete it:</p>
+<div class="highlight"><pre><span></span><code>$ <span class="nb">cd</span> ..
+$ sudo rm -rf latex_to_png
+</code></pre></div>
+
+
+<h3>If you wish to edit the code:</h3>
+<p>You may want to edit the code for your own uses, in which case you should not delete the latex_to_png folder. A setup_dev.sh script is provided that sets up a virtual environment for you when it is first run. The script can be run and the venv can be activated from within the latex_to_png folder thus:</p>
+<div class="highlight"><pre><span></span><code>$ ./setup_dev.sh
+no venv detected, creating one now
+venv created, activate the script at /venv/bin/activate before running this script again
+$ . ./venv/bin/activate
+<span class="o">(</span>venv<span class="o">)</span> $
+</code></pre></div>
+
+
+<p>When you see <code>(venv)</code> preceding your prompt, it has been successfully activated. Deactivate it at any time with</p>
+<div class="highlight"><pre><span></span><code><span class="o">(</span>venv<span class="o">)</span> $ deactivate
+$
+</code></pre></div>
+
+
+<p>All python modules are in the subdirectory latex_to_png within the parent latex_to_png directory. Be aware that any changes you make to the code will not apply to the code that was copied into /usr/local, so the symlink in usr/local/bin cannot be used to test the changes you make. To run the altered code, you can navigate from the parent into the child latex_to_png directory and call ltxpng.py:</p>
+<div class="highlight"><pre><span></span><code><span class="o">(</span>venv<span class="o">)</span> $ <span class="nb">cd</span> latex_to_png
+<span class="o">(</span>venv<span class="o">)</span> $ ./ltxpng.py
+</code></pre></div>
+
+
+<h2>Running ltxpng</h2>
+<p>The first time you run the program, texdir will be created in the location you specified for it during the setup script.</p>
+<p>From anywhere in your file system, you will be able to run  <code>ltxpng</code> to start the program. It requires some flags and/or an argument. </p>
                     </section>
                     <hr/>
                     <aside class="post-meta">
-                        <p>Category: <a href="/category/docs.html">docs</a></p>
+                        <p>Category: <a href="https://hallecountryman.com/category/docs.html">docs</a></p>
                     </aside>
                     <hr/>
                 </article>
@@ -185,6 +222,6 @@
     </div>
         </div>
 
-        <script src="/theme/js/main.js"></script>
+        <script src="https://hallecountryman.com/theme/js/main.js"></script>
     </body>
 </html>
